@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://do4j1hgk5qjok"]
+
+[ext_resource type="Script" uid="uid://ci736ixb7qy4m" path="res://scripts/car_steering_left.gd" id="1_t58wq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0jew"]
+size = Vector3(1.65668, 1, 3.20251)
+
+[node name="car_steering_left" type="VehicleBody3D"]
+script = ExtResource("1_t58wq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.981783, 0)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81736, 0)
+shape = SubResource("BoxShape3D_b0jew")
+
+[node name="wheelFR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60491, 0.319982, -0.971387)
+use_as_steering = true
+wheel_radius = 0.3
+
+[node name="wheelFL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.605, 0.319982, -0.971)
+use_as_steering = true
+wheel_radius = 0.3
+
+[node name="wheelRL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.605, 0.319982, 0.985021)
+use_as_traction = true
+wheel_radius = 0.3
+
+[node name="wheelRR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.605, 0.319982, 0.985)
+use_as_traction = true
+wheel_radius = 0.3

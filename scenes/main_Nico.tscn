@@ -1,0 +1,124 @@
+[gd_scene load_steps=19 format=3 uid="uid://dwasrlpn1dlxk"]
+
+[ext_resource type="Material" uid="uid://bcv25nx0224gu" path="res://materials/concrete.material" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://do4j1hgk5qjok" path="res://scenes/car_steering_left.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://cqljgvw4uhefn" path="res://scenes/container_blue.tscn" id="3_35u3b"]
+[ext_resource type="Material" uid="uid://c7yt2ue4gc5qw" path="res://materials/basic_pink.material" id="4_a3aj5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o5qli"]
+noise_type = 0
+frequency = 0.0068
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0wfyh"]
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_o5qli")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sugp2"]
+sky_top_color = Color(0.318282, 0.448704, 0.668074, 1)
+sky_horizon_color = Color(0.622273, 0.688762, 0.669302, 1)
+sky_cover = SubResource("NoiseTexture2D_0wfyh")
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_jyhfs"]
+sky_material = SubResource("ProceduralSkyMaterial_sugp2")
+
+[sub_resource type="Environment" id="Environment_tbgi4"]
+background_mode = 2
+sky = SubResource("Sky_jyhfs")
+tonemap_mode = 3
+tonemap_white = 3.61
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0wfyh"]
+size = Vector2(512, 512)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
+size = Vector3(512, 1, 512)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gf7tu"]
+size = Vector3(328.765, 15, 44.03)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a3aj5"]
+size = Vector3(152.775, 15, 50.54)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y53ft"]
+size = Vector3(34.415, 9, 71.51)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6p4ld"]
+size = Vector3(17.605, 9, 58.835)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lw2no"]
+size = Vector3(34.415, 15, 121.27)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8y565"]
+size = Vector3(74.54, 9, 34.545)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4wp2r"]
+size = Vector3(34.505, 9, 180.49)
+
+[node name="main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tbgi4")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="docks_base" type="Node3D" parent="."]
+
+[node name="Meshinstance3d" type="MeshInstance3D" parent="docks_base"]
+mesh = SubResource("PlaneMesh_0wfyh")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_o5qli")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="docks_base"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="docks_base/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_sugp2")
+
+[node name="car_steering_left" parent="." instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674429, 0)
+
+[node name="containers" type="Node3D" parent="."]
+
+[node name="container_blue" parent="containers" instance=ExtResource("3_35u3b")]
+transform = Transform3D(0.545824, 0, 0.8379, 0, 1, 0, -0.8379, 0, 0.545824, 0, 0, -9.81102)
+
+[node name="container_stack01" type="MeshInstance3D" parent="containers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.585, 7.5, -71.759)
+mesh = SubResource("BoxMesh_gf7tu")
+surface_material_override/0 = ExtResource("4_a3aj5")
+
+[node name="container_stack03" type="MeshInstance3D" parent="containers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.519, 7.5, 110.506)
+mesh = SubResource("BoxMesh_a3aj5")
+surface_material_override/0 = ExtResource("4_a3aj5")
+
+[node name="container_stack02" type="MeshInstance3D" parent="containers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.447, 4.5, 45.9997)
+mesh = SubResource("BoxMesh_y53ft")
+surface_material_override/0 = ExtResource("4_a3aj5")
+
+[node name="container_stack07" type="MeshInstance3D" parent="containers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.034, 4.5, 29.8236)
+mesh = SubResource("BoxMesh_6p4ld")
+surface_material_override/0 = ExtResource("4_a3aj5")
+
+[node name="container_stack06" type="MeshInstance3D" parent="containers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.667, 7.5, 14.383)
+mesh = SubResource("BoxMesh_lw2no")
+surface_material_override/0 = ExtResource("4_a3aj5")
+
+[node name="container_stack05" type="MeshInstance3D" parent="containers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 204.666, 4.5, -103.662)
+mesh = SubResource("BoxMesh_8y565")
+surface_material_override/0 = ExtResource("4_a3aj5")
+
+[node name="container_stack04" type="MeshInstance3D" parent="containers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.106, 4.5, 77.886)
+mesh = SubResource("BoxMesh_4wp2r")
+surface_material_override/0 = ExtResource("4_a3aj5")
+
+[node name="dock_buildings" type="Node3D" parent="."]
