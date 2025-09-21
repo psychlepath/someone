@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bci5kc4bbjccx"]
+
+[ext_resource type="PackedScene" uid="uid://gi7f2e024n5c" path="res://meshes/dockyard_base.glb" id="1_asyw6"]
+[ext_resource type="Material" uid="uid://c4a2ikivj31th" path="res://materials/concrete_grey.material" id="2_gvqf1"]
+
+[node name="dockyard_base" instance=ExtResource("1_asyw6")]
+
+[node name="dockyard_layout" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_gvqf1")
+
+[node name="dockyard_layout-col" parent="." index="1"]
+visible = false
