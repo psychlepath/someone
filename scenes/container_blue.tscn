@@ -1,9 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqljgvw4uhefn"]
+[gd_scene load_steps=2 format=3 uid="uid://cqljgvw4uhefn"]
 
 [ext_resource type="PackedScene" uid="uid://pp4g1vvrrri5" path="res://meshes/container.glb" id="1_1syo6"]
-[ext_resource type="Material" uid="uid://br2xqtkboyi6w" path="res://materials/container_blue.material" id="2_ghy6o"]
 
 [node name="container_blue" instance=ExtResource("1_1syo6")]
-
-[node name="container" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_ghy6o")

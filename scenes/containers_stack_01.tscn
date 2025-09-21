@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkiw1bm1f7xa6"]
+
+[ext_resource type="PackedScene" uid="uid://6uam043nuycn" path="res://meshes/containers_stack01.glb" id="1_knv7b"]
+[ext_resource type="Material" uid="uid://cqlrabppq4f61" path="res://materials/containers_colours.material" id="2_6frma"]
+
+[node name="containers_stack01" instance=ExtResource("1_knv7b")]
+
+[node name="container_stack01" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6frma")
+
+[node name="container_stack01-col" parent="." index="1"]
+visible = false
